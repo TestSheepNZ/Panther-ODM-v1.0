@@ -151,7 +151,7 @@ public class AircraftManagement {
 
     // Set up fuel usage data ...
     private void initialiseFuelUsage() {
-        int countData;
+        int countData=0;
         
         try {
             File file = new File(fuelFile);
@@ -160,13 +160,15 @@ public class AircraftManagement {
             // FileWriter writeToFile = new FileWriter(file);
             StringBuffer stringBuffer = new StringBuffer();
             String line;
+
             while ((line = bufferedReader.readLine()) != null) {
                 stringBuffer.append(line);
                 stringBuffer.append("\n");
                 FuelRateData lineData = new FuelRateData(line);
                 //Only add if correct
                 if(lineData.getValidData()) {
-                    fuelData.add(lineData);                 
+                    fuelData.add(lineData);
+                    countData++;
                 } else {
                     System.out.println("ERROR - fuel_data file corrupt");
                     System.exit(0);
@@ -179,6 +181,11 @@ public class AircraftManagement {
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("ERROR - fuel_data file not found");
+        }
+        
+        if(countData != 180) {
+            System.out.println("ERROR - fuel_data file missing entries");
+            System.exit(0);
         }
 
     }
