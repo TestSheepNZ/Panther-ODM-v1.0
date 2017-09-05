@@ -1,6 +1,5 @@
 package OperationalDataManual;
 
-
 public class FuelRateData {
     private int acHeight;
     private int acSpeed;
