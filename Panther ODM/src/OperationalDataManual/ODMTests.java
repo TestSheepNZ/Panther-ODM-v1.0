@@ -142,7 +142,7 @@ public class ODMTests {
     
     
     @Test
-    public void readInvalidDataLine () {
+    public void rejectInvalidDataLine () {
         String dataStr = "|32000.0| 400.0| 9000.0| 7.3|23.2|";
         FuelRateData fuelData = new FuelRateData(dataStr);
         
