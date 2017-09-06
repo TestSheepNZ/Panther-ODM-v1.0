@@ -1,5 +1,10 @@
 package OperationalDataManual;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
 public class FuelRateData {
     private int acHeight;
     private int acSpeed;
@@ -134,5 +139,7 @@ public class FuelRateData {
 
         return retSpeed;
     }
-
+    
 }
+
+

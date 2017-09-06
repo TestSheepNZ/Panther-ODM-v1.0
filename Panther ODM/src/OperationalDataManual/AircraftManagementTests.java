@@ -3,7 +3,7 @@ package OperationalDataManual;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class ODMTests {
+public class AircraftManagementTests {
 
     // Bah - I had compairing on doubles, gives true if within 0.01
     private boolean compareWithinTwoDecPlace(double n1, double n2) {
@@ -131,21 +131,5 @@ public class ODMTests {
         thisAircraft.climb(32000.0);
         thisAircraft.aircraftLeg(500.0, 1188.0);
     }
-    
-    @Test
-    public void readValidDataLine () {
-        String dataStr = "|32000.0| 400.0| 9000.0| 7.3|";
-        FuelRateData fuelData = new FuelRateData(dataStr);
-        
-        assertTrue("Fuel data provided processed", fuelData.getValidData());
-    }
-    
-    
-    @Test
-    public void rejectInvalidDataLine () {
-        String dataStr = "|32000.0| 400.0| 9000.0| 7.3|23.2|";
-        FuelRateData fuelData = new FuelRateData(dataStr);
-        
-        assertFalse("Incorrect fuel data rejected", fuelData.getValidData());
-    }
+
 }

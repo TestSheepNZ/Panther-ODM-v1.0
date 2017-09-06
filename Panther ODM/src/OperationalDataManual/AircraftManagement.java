@@ -189,24 +189,6 @@ public class AircraftManagement {
         }
 
     }
-
-    @Test
-    public void setAircraftUp ()
-    {
-        AircraftManagement thisAircraft = new AircraftManagement();
-
-        // Add loadout - I fudged this to get the weigh in the example
-        thisAircraft.addA2AMissile(8);
-        thisAircraft.addDumbBomb(4);
-        thisAircraft.addExternalFuelTanks();
-
-        // Add some fuel
-        thisAircraft.addFuel(5000.0);
-        
-        thisAircraft.climb(30000.0);
-        thisAircraft.acWeight = 12000.0;
-        
-    }
     
 }
 
