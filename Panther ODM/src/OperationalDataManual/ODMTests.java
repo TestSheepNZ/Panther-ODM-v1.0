@@ -140,6 +140,7 @@ public class ODMTests {
         assertTrue("Fuel data provided processed", fuelData.getValidData());
     }
     
+    
     @Test
     public void readInvalidDataLine () {
         String dataStr = "|32000.0| 400.0| 9000.0| 7.3|23.2|";
