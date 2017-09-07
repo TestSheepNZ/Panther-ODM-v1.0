@@ -5,11 +5,6 @@ import static org.junit.Assert.*;
 
 public class AircraftManagementTests {
 
-    // Bah - I had compairing on doubles, gives true if within 0.01
-    private boolean compareWithinTwoDecPlace(double n1, double n2) {
-        return 0.01 > Math.abs(n1 - n2) ? true : false;
-    }
-
     @Test
     public void reconPanther() {
         AircraftManagement thisAircraft = new AircraftManagement();
@@ -79,11 +74,11 @@ public class AircraftManagementTests {
 
         // Find ammout of fuel used going 400nm at 440kts
         thisAircraft.aircraftLeg(440.0, 400.0);
-        assertTrue("1161kg fuel used", compareWithinTwoDecPlace(1161.81, thisAircraft.getFuelUsedLastManoeuvre()));
+        assertEquals("1161kg fuel used", 1161.81, thisAircraft.getFuelUsedLastManoeuvre(), 0.01);
 
         // Find ammout of fuel used going 200nm at 440kts
         thisAircraft.aircraftLeg(440.0, 200.0);
-        assertTrue("542kg fuel used", compareWithinTwoDecPlace(542.72, thisAircraft.getFuelUsedLastManoeuvre()));
+        assertEquals("542kg fuel used", 542.72, thisAircraft.getFuelUsedLastManoeuvre(), 0.01);
     }
 
     @Test
@@ -103,22 +98,22 @@ public class AircraftManagementTests {
 
         // Climb to 20,000
         thisAircraft.climb(20000.0);
-        assertTrue("200kg fuel used", compareWithinTwoDecPlace(200.0, thisAircraft.getFuelUsedLastManoeuvre()));
+        assertEquals("200kg fuel used", 200.0, thisAircraft.getFuelUsedLastManoeuvre(), 0.01);
 
         // Cruise to Palmerston North at 400 kts, should use 265.5kg fuel
         thisAircraft.aircraftLeg(400.0, 75.0);
-        assertTrue("182.25kg fuel used", compareWithinTwoDecPlace(182.25, thisAircraft.getFuelUsedLastManoeuvre()));
+        assertEquals("182.25kg fuel used", 182.25, thisAircraft.getFuelUsedLastManoeuvre(), 0.01);
 
         // Descend to 200ft, travel 86nm to Waioru at 600kts, and will use 626.94 kg of fuel
         thisAircraft.dive(200.0);
         thisAircraft.aircraftLeg(600.0, 86.0);
-        assertTrue("626.94kg fuel used", compareWithinTwoDecPlace(626.94, thisAircraft.getFuelUsedLastManoeuvre()));
+        assertEquals("626.94kg fuel used", 626.94, thisAircraft.getFuelUsedLastManoeuvre(), 0.01);
 
         // Drop bombs
         // Climb to 1000 ft - should use 8 kg fuel
         thisAircraft.dropDumbBomb(4);
         thisAircraft.climb(1000.0);
-        assertTrue("8kg fuel used", compareWithinTwoDecPlace(8.0, thisAircraft.getFuelUsedLastManoeuvre()));
+        assertEquals("8kg fuel used", 8.0, thisAircraft.getFuelUsedLastManoeuvre(), 0.01);
 
         // Fly to Wanganui, 500kts, 57nm
         thisAircraft.aircraftLeg(500.0, 57.0);
